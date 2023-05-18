@@ -19,17 +19,15 @@ const App = () => {
     return <h1>Unable to Fetch Posts</h1>;
   }
 
-  // socket.on("receive_message", (post) => {
-  //   console.log("post data  === ", post);
-  // });
-
   return (
     <div className="App">
-      {(data ?? []).map((post) => (
-        <div key={post.id}>
-          <Post socket={socket} {...post} />
-        </div>
-      ))}
+      <div className="container">
+        {(data ?? []).map((post) => (
+          <div key={post.id}>
+            <Post socket={socket} {...post} />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

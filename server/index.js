@@ -29,9 +29,7 @@ io.on("connection", (socket) => {
   socket.on("send_message", (data) => {
     console.log(`User with ID: ${socket.id} with message: ${data}`);
     console.log("user info updated === ", JSON.stringify(data));
-    console.log("io.sockets.in(data.room) ==== ", io.sockets.in(data.room));
     socket.broadcast.emit("receive_message", data);
-    // io.sockets.in(data.room).emit("receive_message", data);
   });
 
   socket.on("disconnect", () => {
@@ -51,18 +49,14 @@ app.post("/posts", (req, res) => {
     { ...config[index], title },
     ...config.slice(index + 1),
   ];
-  // res.json(list);
   const fileData = JSON.stringify(list);
   fs.writeFile(`./data.json`, fileData, (err) => {
     if (err) console.log(err);
     else {
       console.log("File written successfully\n");
-      // console.log("The written has the following contents:");
-      // console.log(fs.readFileSync("./data.json", "utf8"));
     }
     res.json(list);
   });
-  // <==== req.body will be a parsed JSON object
 });
 
 server.listen(3001, () => {

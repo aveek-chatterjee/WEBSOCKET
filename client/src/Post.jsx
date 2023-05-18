@@ -64,7 +64,7 @@ const Post = ({ socket, title, id }) => {
   };
 
   socket.on("receive_message", (post) => {
-    console.log('post data  === ', post)
+    console.log("post data  === ", post);
     if (post?.id === id) {
       console.log(post);
       setPostMeta({
@@ -82,7 +82,7 @@ const Post = ({ socket, title, id }) => {
         {postMeta.isEditModeOn && (
           <input
             type="text"
-            style={{ width: "80%" }}
+            style={{ width: "70%" }}
             defaultValue={postMeta?.title}
             ref={inputRef}
           />
@@ -101,7 +101,7 @@ const Post = ({ socket, title, id }) => {
             </button>
           )}
           {postMeta.isEditModeOn && (
-            <>
+            <div style={{ display: "flex", gap: "10px" }}>
               <button
                 disabled={createPostMutation.isLoading}
                 onClick={updatePost}
@@ -116,7 +116,7 @@ const Post = ({ socket, title, id }) => {
               >
                 Cancel
               </button>
-            </>
+            </div>
           )}
         </span>
       </div>
