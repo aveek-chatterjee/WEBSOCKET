@@ -44,7 +44,6 @@ const Post = ({ socket, title, id }) => {
 
   const updatePost = (e) => {
     e.preventDefault();
-    socket.emit("send_message", "testing 1....");
     createPostMutation.mutate({
       title: inputRef?.current?.value,
       id,
@@ -54,13 +53,6 @@ const Post = ({ socket, title, id }) => {
       title: inputRef?.current?.value,
       isEditModeOn: false,
     });
-    socket.emit("send_message", "testing 2....");
-    // const messageData = {
-    //   room: 1,
-    //   title: inputRef?.current?.value,
-    //   id,
-    // };
-    // socket.emit("send_message", messageData);
   };
 
   socket.on("receive_message", (post) => {

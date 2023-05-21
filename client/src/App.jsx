@@ -6,7 +6,7 @@ import { getPosts } from "./api/posts";
 import Post from "./Post";
 
 const socket = io.connect("http://localhost:3001");
-socket.emit("join_room", 1);
+socket.emit("join_room", "room1");
 
 const App = () => {
   const { data, isLoading, isError } = useQuery({

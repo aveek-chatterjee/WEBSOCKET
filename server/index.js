@@ -3,12 +3,12 @@ const app = express();
 const http = require("http");
 const cors = require("cors");
 const fs = require("fs");
-const { Server } = require("socket.io");
 const config = require("./data.json");
 
 app.use(cors());
 app.use(express.json());
 
+const { Server } = require("socket.io");
 const server = http.createServer(app);
 
 const io = new Server(server, {
